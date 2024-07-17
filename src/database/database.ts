@@ -1,8 +1,13 @@
-import { Sequelize } from "sequelize";
+import { Sequelize } from "sequelize-typescript";
+import { Video } from "../models/videos";
+import { Tag } from "../models/tags";
+import { VideoTag } from "../models/videotag";
 
-export const sequelize = new Sequelize("videostags", "postgres", "mypassword", {
-  host: "localhost",
-  dialect: "postgres",
+export const sequelize: Sequelize = new Sequelize({
+  database: 'videostags',
+  dialect: 'postgres',
+  username: 'postgres',
+  password: 'mypassword',
+  models: [Video, Tag, VideoTag],
 });
 
-export default sequelize;
