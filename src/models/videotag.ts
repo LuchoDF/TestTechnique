@@ -5,15 +5,11 @@ import { Tag } from "./tags";
 @Table
 export class VideoTag extends Model {
     @ForeignKey(() => Video)
-    @Column({
-        type: DataType.INTEGER,
-    })
+    @Column
     id_video!: number;
 
     @ForeignKey(() => Tag)
-    @Column({
-        type: DataType.INTEGER,
-    })
+    @Column
     id_tag!: number;
 
 }
