@@ -3,6 +3,7 @@ import { sequelize } from "./database/database";
 
 async function main() {
   try {
+    await sequelize.sync();
     await sequelize.authenticate();
     console.log("Connection etabli avec success");
 
