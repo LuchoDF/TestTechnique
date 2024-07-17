@@ -1,30 +1,45 @@
-import { DataTypes } from "sequelize";
+import { Table, Model, Column, DataType, BelongsToMany, AllowNull } from "sequelize-typescript";
 import { sequelize } from "../database/database";
+import { Tag } from "./tags";
+import { VideoTag } from "./videotag";
 
-export const Video = sequelize.define("videos", {
-  id_videos: {
-    type: DataTypes.INTEGER,
-    primaryKey: true,
-    autoIncrement: true,
-  },
+@Table
+export class Video extends Model {
+    @Column({
+        type: DataType.INTEGER,
+        primaryKey: true,
+        autoIncrement: true,
+    })
+    id_video!: number;
 
-  nom: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
+    @Column({
+        type: DataType.STRING,
+        allowNull: false,
+    })
+    nom!: string;
 
-  description: {
-    type: DataTypes.TEXT,
-  },
+    @Column({
+        type: DataType.TEXT,
+    })
+    description!: string;
 
-  url: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
+    @Column({
+        type: DataType.STRING,
+        allowNull: false,
+    })
+    url!: string;
+    
+    @Column({
+        type: DataType.DATE,
+    })
+    createdAt!: Date;
 
-  created: {
-    type: DataTypes.INTEGER,
-    primaryKey: true,
-    autoIncrement: true,
-  },
-});
+    @Column({
+        type: DataType.DATE,
+    })
+    updatedAt!: Date;
+
+    @BelongsToMany (()=> Tag, () =>VideoTag)
+    tags!: Tag[];
+
+}
