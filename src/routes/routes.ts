@@ -1,11 +1,11 @@
 import { Router } from "express";
-import { getVideos } from "../controllers/videosTags.controller";
+import { getVideos, createVideo } from "../controllers/videos.controller";
 
 export const routes = Router();
 
 
 routes.get("/videos", getVideos);
-routes.post("/videos");
+routes.post("/videos", createVideo);
 routes.put("/videos/:id");
 routes.delete("/videos/:id");
 routes.get("/videos/:id");
