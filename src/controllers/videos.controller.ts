@@ -25,15 +25,20 @@ export const createVideo = async (req: Request, res: Response) => {
 };
 
 export const updateVideo = async (req: Request, res: Response) => {
-  const { nom, description, url } = req.body;
-  const video = await Video.findByPk(req.params.id);
-  if (video) {
+  try {
+    const { nom, description, url } = req.body;
+    const { id } = req.params;
+    const video = await Video.findByPk(req.params.id);
+    if (!video) {
+      return res.status(404).json({ error: "Video pas trouvé" });
+    }
     await video.update({ nom, description, url });
     res.json(video);
-  } else {
-    res.status(404).json({ error: "Video pas trouvé" });
+  } catch (error) {
+    return res.status(500).json({ message: (error as Error).message });
   }
 };
+
 export const deleteVideo = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
