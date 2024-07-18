@@ -13,6 +13,21 @@ export const createVideo = async (req: Request, res: Response) => {
         description,
         url
     })
-    res.send(`New video added: " ${JSON.stringify(newVideo)}`);
+    res.send(`Video ajouté: " ${JSON.stringify(newVideo)}`);
+}
+
+export const updateVideo = async (req: Request, res: Response) => {
+    const {nom, description, url} = req.body;
+    const video = await Video.findByPk(req.params.id);
+    if(video) {
+        await video.update({nom, description, url});
+        res.json(video);
+    } else {
+        res.status(404).json({error: "video pas trouvé"});
+    }
+}
+
+export const deleteVideo = async (req: Request, res: Response) => {
+    
 }
 
