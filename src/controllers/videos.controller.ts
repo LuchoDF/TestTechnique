@@ -52,14 +52,3 @@ export const deleteVideo = async (req: Request, res: Response) => {
     return res.status(500).json({ message: (error as Error).message });
   }
 };
-
-// export const deleteVideo = async (req: Request, res: Response) => {
-//     const video = await Video.findByPk(req.params.id);
-//     if(video) {
-//         await video.destroy();
-//         res.sendStatus(204);
-//     } else {
-//         res.status(404).json({message: error.me);
-//         })
-//     }
-// }
