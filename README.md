@@ -9,7 +9,7 @@ Cette API permet de gérer les vidéos et les tags associés à chaque vidéo da
 
 1. [Technologies Utilisées](#technologies-utilisées)
 2. [Installation](#installation)
-3. [Utilisation](#Utilisation et démarrage)
+3. [Utilisation](#utilisation)
 4. [Points de Terminaison de l'API](#points-de-termination-de-lapi)
 5. [Licence](#licence)
 
