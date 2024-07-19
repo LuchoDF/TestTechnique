@@ -4,11 +4,10 @@ import { routes } from "./routes/routes";
 
 async function main() {
   try {
-    await sequelize.sync({force: false});
+    await sequelize.sync({ force: false });
     await sequelize.authenticate();
     console.log("Connection etabli avec success");
 
-    
     const app = express();
     // Middleware para parsear JSON
     app.use(express.json());
@@ -17,7 +16,7 @@ async function main() {
       console.log("Server on port", 3000);
     });
   } catch (error) {
-    console.error("Impossible de se connecter à la base de donnés",error);
+    console.error("Impossible de se connecter à la base de donnés", error);
   }
 }
 
