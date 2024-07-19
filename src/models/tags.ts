@@ -22,7 +22,7 @@ export class Tag extends Model {
     
 
     @BelongsToMany (()=> Video, () =>VideoTag)
-    videoss!: Video[];
+    videos!: Video[];
 
 }
 
